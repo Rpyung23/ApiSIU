@@ -1,0 +1,22 @@
+{
+  "name": "apisiu",
+  "version": "1.0.0",
+  "description": "Api de Sistema de Informacion al Usuario",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "author": "Vigitrack Cia. Ltda",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "mongoose": "^6.3.0",
+    "realm": "^10.16.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
