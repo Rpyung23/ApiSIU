@@ -13,7 +13,7 @@ app.get('/verificaCiudad/:latitud/:longitud',
             res.status(200)
                 .json({
                     statusCode: datos.datos.length > 0 ? 200 : 300,
-                    msm: datos.datos.length > 0 ? 'Datos consultados con éito' : 'No existen datos disponibles',
+                    msm: datos.datos.length > 0 ? 'Datos consultados con éxito' : 'No existen datos disponibles',
                     datos: datos.datos
                 })
 
