@@ -5,6 +5,8 @@ const cors = require('cors')
 const app = express()
 const ciudad = require('./view/ciudad')
 const rutas = require('./view/rutas')
+const paradas = require('./view/paradas')
+const paradaruta = require('./view/paradas_ruta')
 
 app.use(bodyparser.urlencoded({urlencoded:false,limit:'80mb'}))
 app.use(bodyparser.json({limit:'80mb'}))
@@ -20,6 +22,8 @@ app.use(cors({
 
 app.use('/system',ciudad)
 app.use('/system',rutas)
+app.use('/system',paradas)
+app.use('/system',paradaruta)
 
 app.listen(process.env.PORT,()=>
 {

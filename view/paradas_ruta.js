@@ -1,12 +1,12 @@
 let express = require('express')
 let app = express()
-let ControllerParada = require("../controller/controller.parada")
-const oControllerParada = new ControllerParada();
+let ControllerParadaRuta = require("../controller/controller.parada_ruta")
+const oControllerParadaRuta = new ControllerParadaRuta();
 
-app.get('/readParadasAllByCiudad/:idCiudad',
+app.get('/readModelAllParadasByRuta/:idRuta',
     async function (req,res)
     {
-        var datos = await oControllerParada.readControllerAllParadasByCiudad(req.params.idCiudad);
+        var datos = await oControllerParadaRuta.readControllerAllParadasByRuta(req.params.idRuta);
         try{
             if (datos!=null)
             {

@@ -4,7 +4,7 @@ let SchemaCiudad = require('../schema/schema.ciudad')
 
 class ModelCiudad
 {
-    async verificaLocation(lat,lng)
+    async verificaLocation()
     {
         try{
             var conn = await dbConnection()

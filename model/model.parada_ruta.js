@@ -1,26 +1,25 @@
 let {dbConnection} = require('../config/conn')
 let {getCodeMongoDBString} = require('../config/errorCodeMongo')
-let SchemaRuta = require('../schema/schema.ruta')
+let SchemaParadaRuta = require('../schema/schema.parada_ruta')
 const mongoose = require("mongoose");
 
-class ModelRuta
+class ModelParada_ruta
 {
-    async readModelAllRutaByCiudad(idCiudad)
-    {
+    async readModelAllParadasByRuta(idRuta){
         try{
             var conn = await dbConnection()
-            var datos = await SchemaRuta.find({IdCiudad:mongoose.Types.ObjectId(idCiudad)})
+            var datos = await SchemaParadaRuta.find({idRuta:mongoose.Types.ObjectId(idRuta)})
             var response = {error:null,datos:datos}
             console.log(response)
             return response
         }catch (e) {
-            console.log("ERROR MODEL RUTA")
+            console.log("ERROR MODEL PARADA")
             console.log(e)
             return {error:getCodeMongoDBString(e.code),datos:[]}
         }
     }
 
-
 }
 
-module.exports = ModelRuta
+
+module.exports = ModelParada_ruta

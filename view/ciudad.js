@@ -5,15 +5,16 @@ const oControllerCiudd = new ControllerCiudad();
 app.get('/verificaCiudad/:latitud/:longitud',
     async function (req,res)
 {
-    var datos = await oControllerCiudd.verificaControllerCiudad(req.params.lat,req.params.lng);
-    console.log(datos)
+    //console.log(req.params)
+    var datos = await oControllerCiudd.verificaControllerCiudad(req.params.latitud,req.params.longitud);
+    //console.log(datos)
     try{
         if (datos!=null)
         {
             res.status(200)
                 .json({
-                    statusCode: datos.datos.length > 0 ? 200 : 300,
-                    msm: datos.datos.length > 0 ? 'Datos consultados con éxito' : 'No existen datos disponibles',
+                    statusCode: datos.error == null && datos.datos != null ? 200 : 300,
+                    msm: datos.error == null && datos.datos != null ? 'Datos consultados con éxito' : 'Ubicación fuera de rango.',
                     datos: datos.datos
                 })
 
@@ -21,7 +22,7 @@ app.get('/verificaCiudad/:latitud/:longitud',
             res.status(200)
                 .json({
                     statusCode: 400,
-                    msm:datos == null ? 'Error en Controller' : datos.error,
+                    msm: 'Error en Controller',
                     datos:[]
                 })
         }

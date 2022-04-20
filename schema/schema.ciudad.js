@@ -8,3 +8,4 @@ const SchemaCiudad = Schema({
 },{collection:'ciudad'});
 
 module.exports = model('ciudad',SchemaCiudad)
+
