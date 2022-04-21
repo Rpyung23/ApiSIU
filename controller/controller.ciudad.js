@@ -8,29 +8,20 @@ class ControllerCiudad
             var datos = await oModelCiudad.verificaLocation()
             //var pt = {lat: '-1.6528584',lng: '-78.7090672'};
             var pt = {lat:lat,lng:lng};
-            var i = 0;
-            var positions = [];
-
             var banderaFin = false
             var banderaCheck = false
             var contador = 0
             var objAux = null
-
             for (var i =0;i<datos.datos.length;i++)
             {
                 var aux = datos.datos[i];
-
                 if (IsWithin(pt,aux.poligono,true))
                 {
-                    console.log("OK")
                     objAux = aux
                     i = 999999999999999999999999999999999999 ;
                 }
-
             }
-
             return {error:null,datos:objAux};
-
         }catch (e) {
             console.log("ERROR CONTROLLER CIUDAD")
             console.log(e.toString())

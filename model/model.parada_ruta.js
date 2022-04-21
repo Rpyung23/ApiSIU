@@ -10,7 +10,12 @@ class ModelParada_ruta
             var conn = await dbConnection()
             //var datos = await SchemaParadaRuta.find({idRuta:mongoose.Types.ObjectId(idRuta)})
             var datos = await SchemaParadaRuta.aggregate([
-                {$match:{idRuta:mongoose.Types.ObjectId(idRuta)}},
+                {
+                    $match:
+                        {
+                            idRuta:mongoose.Types.ObjectId(idRuta)
+                        }
+                },
                 {
                     $lookup:{
                         from:'parada',//a q coleccion quiero unir
@@ -20,28 +25,11 @@ class ModelParada_ruta
                     }
                 }
             ])
-            var datosP = []
-            if (datos.length>0){
-                for (var i = 0;i<datos.length;i++)
-                {
-                    var obj = {
-                        _id :datos[i]._id,
-                        idParada:datos[i].idParada,
-                        idRuta:datos[i].idRuta,
-                        fechaCreacion:datos[i].fechaCreacion,
-                        parada:{
-                            id:datos[i].paradaRuta[0]._id,
-                            position:datos[i].paradaRuta[0].position
-                        }
-                    }
-                    datosP.push(obj)
-                }
-            }
-            var response = {error:null,datos:datosP}
+            var response = {error:null,datos:datos}
             console.log(response)
             return response
         }catch (e) {
-            console.log("ERROR MODEL PARADA")
+            console.log("ERROR MODEL PARADA RUTA")
             console.log(e)
             return {error:getCodeMongoDBString(e.code),datos:[]}
         }
