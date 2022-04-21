@@ -19,5 +19,4 @@ class ModelServidor
         }
     }
 }
-
 module.exports = ModelServidor

@@ -14,7 +14,6 @@ class ControllerServidor
             return  {error:e.toString(),datos:[]}
         }
     }
-
 }
 
 module.exports = ControllerServidor

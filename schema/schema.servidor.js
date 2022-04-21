@@ -5,5 +5,4 @@ const SchemaServidor = Schema({
     user:{type:String,require:true},
     contrasenia:{type:String,require:true}
 },{collection:'servidor'});
-
 module.exports = model('servidor',SchemaServidor)
