@@ -9,6 +9,7 @@ const paradas = require('./view/paradas')
 const paradaruta = require('./view/paradas_ruta')
 const empresas = require('./view/empresas')
 const conductor = require('./view/conductor')
+const servidor = require('./view/servidor')
 
 app.use(bodyparser.urlencoded({urlencoded:false,limit:'80mb'}))
 app.use(bodyparser.json({limit:'80mb'}))
@@ -28,6 +29,7 @@ app.use('/system',paradas)
 app.use('/system',paradaruta)
 app.use('/system',empresas)
 app.use('/system',conductor)
+app.use('/system',servidor)
 
 app.listen(process.env.PORT,()=>
 {
