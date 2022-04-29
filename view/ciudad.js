@@ -5,9 +5,7 @@ const oControllerCiudd = new ControllerCiudad();
 app.get('/verificaCiudad/:latitud/:longitud',
     async function (req,res)
 {
-    //console.log(req.params)
     var datos = await oControllerCiudd.verificaControllerCiudad(req.params.latitud,req.params.longitud);
-    //console.log(datos)
     try{
         if (datos!=null)
         {
@@ -36,7 +34,6 @@ app.get('/verificaCiudad/:latitud/:longitud',
                 datos:[]
             })
     }
-
 });
 
 module.exports = app

@@ -30,7 +30,6 @@ class ControllerCiudad
     }
 }
 
-
 function IsWithin(pt,polygon,noneZeroMode) {
     var ptNum = polygon.length;
     if (ptNum < 3) {
@@ -54,10 +53,7 @@ function IsWithin(pt,polygon,noneZeroMode) {
         j = k;
     }
     var bandera = noneZeroMode ? zeroState !=0 : oddNodes
-    console.log("BANDERA : "+bandera)
     return bandera;
 }
-
-
 
 module.exports = ControllerCiudad

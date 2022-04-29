@@ -16,7 +16,6 @@ app.get('/readParadasAllByCiudad/:idCiudad',
                         msm: datos.datos.length > 0 ? 'Datos consultados con éxito' : 'No existen datos disponibles',
                         datos: datos.datos
                     })
-
             }else{
                 res.status(200)
                     .json({

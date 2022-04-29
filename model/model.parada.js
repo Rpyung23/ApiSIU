@@ -1,5 +1,6 @@
 let {dbConnection} = require('../config/conn')
 let {getCodeMongoDBString} = require('../config/errorCodeMongo')
+let oCon
 let SchemaParada = require('../schema/schema.parada')
 const mongoose = require("mongoose");
 
@@ -11,7 +12,6 @@ class ModelParada
             var conn = await dbConnection()
             var datos = await SchemaParada.find({idCiudad:mongoose.Types.ObjectId(idCiudad)})
             var response = {error:null,datos:datos}
-            console.log(response)
             return response
         }catch (e) {
             console.log("ERROR MODEL PARADA")
