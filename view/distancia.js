@@ -6,38 +6,19 @@ const oControllerDistancia = new ControllerDistancia();
 app.get('/readDistances/:ciudad',
     async function (req,res)
     {
-        var datos = await oControllerDistancia.readControllerDistancias(req.params.ciudad,(error,datos)=>
-        {
-            try{
-                if (datos!=null)
-                {
-                    res.status(200)
-                        .json({
-                            statusCode: datos.distances.length > 0 ? 200 : 300,
-                            msm: datos.distances.length > 0 ? 'Datos consultados con éxito' : 'No existen datos disponibles',
-                            datos: datos
-                        })
+        var origins = ['-1.65579125689191, -78.6780999210139'];
+        var destinations = ['-1.657198, -78.654732']
 
-                }else{
-                    res.status(200)
-                        .json({
-                            statusCode: 400,
-                            msm:datos == null ? 'Error en Controller' : datos.error,
-                            datos:[]
-                        })
-                }
-            }catch (e) {
-                console.log("ERROR APIREST")
-                console.log(e.toString())
-                res.status(400)
-                    .json({
-                        statusCode: 400,
-                        msm:e.toString(),
-                        datos:[]
-                    })
-            }
-        });
+        var datosOrigins = await oControllerDistancia.readControllerDistancias(req.params.ciudad,origins);
+        var datosDestinations = await oControllerDistancia.readControllerDistancias(req.params.ciudad,destinations);
 
+        res.status(200)
+            .json({
+                statusCode: '200',
+                msm: 'msm',
+                datosOrigins: datosOrigins,
+                datosDestinations:datosDestinations
+            })
     });
 
 module.exports = app
