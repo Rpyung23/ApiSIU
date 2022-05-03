@@ -11,6 +11,7 @@ const empresas = require('./view/empresas')
 const conductor = require('./view/conductor')
 const servidor = require('./view/servidor')
 const distancias = require('./view/distancia')
+const sugerencia = require('./view/sugerencia')
 
 app.use(bodyparser.urlencoded({urlencoded:false,limit:'80mb'}))
 app.use(bodyparser.json({limit:'80mb'}))
@@ -32,6 +33,7 @@ app.use('/system',empresas)
 app.use('/system',conductor)
 app.use('/system',servidor)
 app.use('/system',distancias)
+app.use('/system',sugerencia)
 
 app.listen(process.env.PORT,()=>
 {
