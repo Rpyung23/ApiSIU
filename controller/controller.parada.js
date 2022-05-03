@@ -15,6 +15,7 @@ class ControllerParada
         }
     }
 
+
 }
 
 module.exports = ControllerParada

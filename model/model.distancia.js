@@ -2,7 +2,7 @@ const distance = require("google-distance-matrix");
 const NodeDistanceMatrix = require('node-distance-matrix');
 const e = require("express");
 
-const distanceWalking = 800;/**METROS**/
+const distanceWalking = 500;/**METROS**/
 class ModelDistancia
 {
     async readModelDistancia(ciudad,paradas,origins)

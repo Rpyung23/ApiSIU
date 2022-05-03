@@ -34,6 +34,29 @@ class ModelParada_ruta
             return {error:getCodeMongoDBString(e.code),datos:[]}
         }
     }
+
+    async readModelAllParadasJoinRutaByCiudad(ciudad)
+    {
+        await dbConnection()
+        var datos = await SchemaParadaRuta.aggregate([{
+            $lookup: {
+                from: "parada",
+                localField: "idParada",
+                foreignField: "_id",
+                as: "parada"
+            }
+        },{
+            $lookup: {
+                from: "ruta",
+                localField: "idRuta",
+                foreignField: "_id",
+                as: "ruta"
+            }
+        }])
+
+        return datos
+    }
+
 }
 
 
