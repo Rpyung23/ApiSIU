@@ -12,28 +12,30 @@ class ControllerDistancia
     async readControllerDistancias(ciudad,origins)
     {
         try{
-            var datos = await oControllerParadaRuta.readControllerAllParadasJoinRutaByCiudad(ciudad)
+            var datos = []
+            var paradas = await oControllerParadaRuta.readControllerAllParadasJoinRutaByCiudad(ciudad)
+            /*let paradas = await oControllerParada.readControllerAllParadasByCiudad(ciudad);*/
+            var LONGITUD_PEDAZOS = Math.trunc(paradas.length / 25);
+            var mListaParadasDivider = []
 
-            /*let paradas = await oControllerParada.readControllerAllParadasByCiudad(ciudad);
-            var LONGITUD_PEDAZOS = Math.trunc(paradas.datos.length / 25);
-            var mListaParadasDivider = []*/
 
+            console.log("LONGITUD PEDAZOS : "+LONGITUD_PEDAZOS)
             /**DIVIDE LAS PARADAS EN ARRAYS DE TAMAÑO 25**/
 
-            /*var start = 0;
+            var start = 0;
             var end = 25;
 
             for(var i = 0;i<LONGITUD_PEDAZOS;i++)
             {
 
-                mListaParadasDivider.push(paradas.datos.slice(start,end))
+                mListaParadasDivider.push(paradas.slice(start,end))
                 start = start + 25;
                 end = end + 25;
-            }*/
+            }
 
             /******************************************/
 
-            /*for (var j=0;j<mListaParadasDivider.length;j++)
+            for (var j=0;j<mListaParadasDivider.length;j++)
             {
                 var resultadoModelDistance = await oModelDistancia
                     .readModelDistancia(ciudad,mListaParadasDivider[j],origins)
@@ -42,7 +44,8 @@ class ControllerDistancia
                 {
                     datos.push(resultadoModelDistance[k])
                 }
-            }*/
+            }
+
             return datos
 
         }catch (e) {

@@ -21,6 +21,21 @@ class ModelRuta
     }
 
 
+    async readModelAllRutaById(idRuta)
+    {
+        try{
+            var conn = await dbConnection()
+            var datos = await SchemaRuta.findById({_id:mongoose.Types.ObjectId(idRuta)})
+            var response = {error:null,datos:datos}
+            return response
+        }catch (e) {
+            console.log("ERROR MODEL RUTA")
+            console.log(e)
+            return {}
+        }
+    }
+
+
 }
 
 module.exports = ModelRuta

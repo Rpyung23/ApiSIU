@@ -15,7 +15,7 @@ class ModelDistancia
 
             for (var j = 0; j < paradas.length; j++)
             {
-                var aux = paradas[j].position.lat + ',' + paradas[j].position.lng
+                var aux = paradas[j].parada.position.lat + ',' + paradas[j].parada.position.lng
 
                 listParadasPosition.push(aux.toString())
             }

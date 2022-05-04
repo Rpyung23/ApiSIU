@@ -51,19 +51,23 @@ class ControllerParada_ruta
             datosPro.push(obj)
         }
 
-
+        //console.log(datosPro[195])
         for(var j = 0;j<paradas.datos.length;j++)
         {
             var rutasP = []
 
             for (var k = 0;k<datosPro.length;k++)
             {
-
-                if (paradas.datos[j]._id == datosPro[k].idParada)
+                //console.log(k)
+                //console.log(datosPro[k].parada[0]._id.toString())
+                if(datosPro[k].parada.length > 0)
                 {
-                    console.log("ok")
-                    rutasP.push(datosPro[k].ruta[0]);
-                    datosPro.slice(0,k)
+                    if (paradas.datos[j]._id.toString() == datosPro[k].parada[0]._id.toString())
+                    {
+                        //console.log("ok")
+                        rutasP.push(datosPro[k].ruta[0]);
+                        datosPro.slice(0,k)
+                    }
                 }
             }
 
@@ -74,7 +78,7 @@ class ControllerParada_ruta
         }
 
 
-        return datosPro
+        return datosPro2
     }
 }
 
