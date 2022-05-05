@@ -6,11 +6,12 @@ let {rutasIdUnicas,paradasInicioDestino} = require("../utils/distance")
 
 const oControllerDistancia = new ControllerDistancia();
 const oControllerRuta = new ControllerRuta()
-app.get('/readDistances/:ciudad',
+app.get('/readDistances/:ciudad/:latitudI/:longitudI/:latitudF/:longitudF',
     async function (req,res)
     {
-        var origins = ['-1.661345, -78.684208'];
-        var destinations = ['-1.6696001,-78.6604532']// ['-1.657198, -78.654732']
+        var ciudad = req.params.ciudad
+        var origins = [req.params.latitudI.toString()+','+req.params.longitudI.toString()];
+        var destinations = [req.params.latitudF.toString()+','+req.params.longitudF.toString()]// ['-1.657198, -78.654732']
 
         var idRutasUnicas = []
         var resultadoFinal = []
