@@ -54,6 +54,18 @@ class ControllerDistancia
             return []
         }
     }
+    async readControllerTiempoViaje(origin,destination)
+    {
+        try{
+            var datos = await oModelDistancia.readModelTiempoViaje(origin,destination)
+            return datos
+
+        }catch (e) {
+            console.log("ERROR CONTROLLER DISTANCIAS")
+            console.log(e)
+            return []
+        }
+    }
 }
 
 module.exports = ControllerDistancia

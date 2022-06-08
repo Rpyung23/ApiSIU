@@ -54,11 +54,34 @@ let paradasInicioDestino = (Idruta,ListaParadas)=>
                 }
             }
         }
-
         return ListaParadaPorRuta
     }catch (e){
         return null
     }
 }
 
-module.exports = {rutasIdUnicas,paradasInicioDestino}
+let tiempoViajeParada = (Idruta,ListaParadas)=>
+{
+    var ListaViajeTiempo = []
+
+    try{
+        for (var i = 0;i<ListaParadas.length;i++)
+        {
+            for (var j =0 ;j<ListaParadas[i].paradaMongoDB.ruta.length;j++)
+            {
+                if (Idruta == ListaParadas[i].paradaMongoDB.ruta[j]._id.toString())
+                {
+                    var obj = {duracion: ListaParadas[i].duration}
+                    ListaViajeTiempo.push(obj)
+                }
+            }
+        }
+        return ListaViajeTiempo
+    }catch (e){
+        return null
+    }
+}
+
+
+
+module.exports = {rutasIdUnicas,paradasInicioDestino,tiempoViajeParada}

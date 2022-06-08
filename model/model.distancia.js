@@ -20,11 +20,9 @@ class ModelDistancia
                 listParadasPosition.push(aux.toString())
             }
 
-
             var distanceMatrix = await NodeDistanceMatrix
                 .getDistanceMatrix('AIzaSyDOAdi7ZLdoctlCRA3_gYTeeIAjEHsTTY4',
                     origins, listParadasPosition, 'walking','metric');
-
 
             for (var i = 0;i<distanceMatrix.data.rows[0].elements.length;i++)
             {
@@ -36,12 +34,36 @@ class ModelDistancia
                         distanceValue: distanceMatrix.data.rows[0].elements[i].distance.value,
                         duration: distanceMatrix.data.rows[0].elements[i].duration.text
                     }
-
                     datos.push(obj)
                 }
 
             }
 
+            return datos;
+
+        }catch (e) {
+            console.log("ERROR MODEL DISTANCIA")
+            console.log(e)
+            return [];
+        }
+    }
+
+    async readModelTiempoViaje(origin,destination)
+    {
+        var datos =[]
+        try{
+            var distanceMatrix = await NodeDistanceMatrix
+                .getDistanceMatrix('AIzaSyDOAdi7ZLdoctlCRA3_gYTeeIAjEHsTTY4',
+                    origin, destination, 'driving','metric');
+
+            for (var i = 0;i<distanceMatrix.data.rows[0].elements.length;i++)
+            {
+                var obj = {
+                    distancia: distanceMatrix.data.rows[0].elements[i].distance.text,
+                    duracion: distanceMatrix.data.rows[0].elements[i].duration.text
+                }
+                datos.push(obj)
+            }
             return datos;
 
         }catch (e) {
