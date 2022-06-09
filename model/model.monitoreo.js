@@ -7,8 +7,8 @@ class ModelMonitoreo {
         var response = []
         for (var i = 0; i < connections.length; i++) {
             var con = await connections[i].promise();
-            const data = await con.query("select UltiLatiMoni,UltiLongMoni,UltiRumbMoni,UltiVeloMoni,UltiFechMoni " +
-                "from monitoreo WHERE LetrRutaMoni = '"+linea+"' and DATE(UltiFechMoni) = DATE(NOW()) ");
+            const data = await con.query("select UltiLatiMoni,UltiLongMoni,UltiRumbMoni,UltiVeloMoni,UltiFechMoni from " +
+                "monitoreo WHERE LetrRutaMoni = '"+linea+"' and DATE(UltiFechMoni) = DATE(NOW())");
             con.end();
             var datos = data[0]
             for (var j = 0; j < datos.length; j++) {
