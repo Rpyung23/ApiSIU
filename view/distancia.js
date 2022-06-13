@@ -33,10 +33,10 @@ app.get('/readDistances/:ciudad/:latitudI/:longitudI/:latitudF/:longitudF',
                 datosTiempoDestinations = tiempoViajeParada(idRutasUnicas[i],datosDestinations)
                 datosOrigins = paradasInicioDestino(idRutasUnicas[i],datosOrigins)
                 datosDestinations = paradasInicioDestino(idRutasUnicas[i],datosDestinations)
-                var obj = { tiempoViaje : datosTiempoOrigins }
+                /*var obj = { tiempoViaje : datosTiempoOrigins }
                 var obj2 = { tiempoViaje : datosTiempoDestinations }
                 datosOrigins.push(obj)
-                datosDestinations.push(obj2)
+                datosDestinations.push(obj2)*/
             }catch (e) {
                 console.log(e)
             }
