@@ -6,7 +6,7 @@ let {rutasIdUnicas,paradasInicioDestino} = require("../utils/distance")
 
 const oControllerDistancia = new ControllerDistancia();
 const oControllerRuta = new ControllerRuta()
-app.get('/readDistances/:ciudad/:latitudI/:longitudI/:latitudF/:longitudF',
+app.get('/readDistance/:ciudad/:latitudI/:longitudI/:latitudF/:longitudF',
     async function (req,res)
     {
         var ciudad = req.params.ciudad

@@ -77,7 +77,6 @@ class ControllerParada_ruta
             })
         }
 
-
         return datosPro2
     }
 }

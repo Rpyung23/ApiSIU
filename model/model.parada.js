@@ -10,6 +10,7 @@ class ModelParada
 {
     async readModelAllParadaByCiudad(idCiudad)
     {
+
         try{
             await dbConnection()
             var datos = await SchemaParada.find({idCiudad:mongoose.Types.ObjectId(idCiudad)})

@@ -52,11 +52,11 @@ class ModelParada_ruta
                 foreignField: "_id",
                 as: "ruta"
             }
-        }])
-
+        }
+        ])
+        console.log(datos)
         return datos
     }
-
 }
 
 
