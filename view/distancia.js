@@ -2,7 +2,7 @@ let express = require('express')
 let app = express()
 let ControllerDistancia = require("../controller/controller.distancia")
 let ControllerRuta = require("../controller/controller.ruta")
-let {rutasIdUnicas,paradasInicioDestino,tiempoViajeParada} = require("../utils/distance")
+let {rutasIdUnicas,paradasInicioDestino} = require("../utils/distance")
 
 const oControllerDistancia = new ControllerDistancia();
 const oControllerRuta = new ControllerRuta()
@@ -15,8 +15,6 @@ app.get('/readDistances/:ciudad/:latitudI/:longitudI/:latitudF/:longitudF',
 
         var idRutasUnicas = []
         var resultadoFinal = []
-        var datosTiempoOrigins = []
-        var datosTiempoDestinations = []
 
         var datosOrigins = []
         var datosDestinations = []
@@ -29,8 +27,6 @@ app.get('/readDistances/:ciudad/:latitudI/:longitudI/:latitudF/:longitudF',
         for (var i = 0;i<idRutasUnicas.length;i++)
         {
             try{
-                datosTiempoOrigins = tiempoViajeParada(idRutasUnicas[i],datosOrigins)
-                datosTiempoDestinations = tiempoViajeParada(idRutasUnicas[i],datosDestinations)
                 datosOrigins = paradasInicioDestino(idRutasUnicas[i],datosOrigins)
                 datosDestinations = paradasInicioDestino(idRutasUnicas[i],datosDestinations)
                 /*var obj = { tiempoViaje : datosTiempoOrigins }
