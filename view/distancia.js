@@ -29,10 +29,6 @@ app.get('/readDistances/:ciudad/:latitudI/:longitudI/:latitudF/:longitudF',
             try{
                 datosOrigins = paradasInicioDestino(idRutasUnicas[i],datosOrigins)
                 datosDestinations = paradasInicioDestino(idRutasUnicas[i],datosDestinations)
-                /*var obj = { tiempoViaje : datosTiempoOrigins }
-                var obj2 = { tiempoViaje : datosTiempoDestinations }
-                datosOrigins.push(obj)
-                datosDestinations.push(obj2)*/
             }catch (e) {
                 console.log(e)
             }
@@ -52,41 +48,6 @@ app.get('/readDistances/:ciudad/:latitudI/:longitudI/:latitudF/:longitudF',
                 statusCode: resultadoFinal.length > 0 ? 200 : 300,
                 result:resultadoFinal
             })
-    });
-
-app.get('/readTiempoViaje/:latitudI/:longitudI/:latitudF/:longitudF',
-    async function (req,res)
-    {
-        var origins = [req.params.latitudI.toString()+','+req.params.longitudI.toString()];
-        var destinations = [req.params.latitudF.toString()+','+req.params.longitudF.toString()]// ['-1.657198, -78.654732']
-
-        var datos = await oControllerDistancia.readControllerTiempoViaje(origins,destinations);
-        try {
-            if (datos != null) {
-                res.status(200)
-                    .json({
-                        status_code: datos.length > 0 ? 200 : 300,
-                        sms: datos.length > 0 ? 'Datos consultados con éxito' : 'No existen datos disponibles',
-                        datos: datos
-                    })
-            } else {
-                res.status(200)
-                    .json({
-                        status_code: 400,
-                        sms: 'Error en Controller',
-                        datos: []
-                    })
-            }
-        } catch (e) {
-            console.log("ERROR APIREST")
-            console.log(e)
-            res.status(400)
-                .json({
-                    status_code: 400,
-                    sms: "Error en apirest" +e.toString(),
-                    datos: []
-                })
-        }
     });
 
 module.exports = app

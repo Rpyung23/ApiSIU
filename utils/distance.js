@@ -11,8 +11,6 @@ let rutasIdUnicas = (datosOrigins,datosDestinations)=>
             {
                 for (var l = 0; l<datosDestinations[k].paradaMongoDB.ruta.length;l++)
                 {
-                    /*console.log(datosOrigins[i].paradaMongoDB.ruta[j].codeRuta + " == " +
-                        datosDestinations[k].paradaMongoDB.ruta[l].codeRuta )*/
                     if (datosOrigins[i].paradaMongoDB.ruta[j]._id.toString() ==
                         datosDestinations[k].paradaMongoDB.ruta[l]._id.toString())
                     {
@@ -21,8 +19,6 @@ let rutasIdUnicas = (datosOrigins,datosDestinations)=>
                 }
             }
             if (bandera > 0){
-                //console.log("********************************")
-                //console.log(datosOrigins[i].paradaMongoDB.ruta[j].codeRuta)
                 StringIdRutas.push(datosOrigins[i].paradaMongoDB.ruta[j]._id.toString())
             }
         }
@@ -60,28 +56,4 @@ let paradasInicioDestino = (Idruta,ListaParadas)=>
     }
 }
 
-let tiempoViajeParada = (Idruta,ListaParadas)=>
-{
-    var ListaViajeTiempo = []
-
-    try{
-        for (var i = 0;i<ListaParadas.length;i++)
-        {
-            for (var j =0 ;j<ListaParadas[i].paradaMongoDB.ruta.length;j++)
-            {
-                if (Idruta == ListaParadas[i].paradaMongoDB.ruta[j]._id.toString())
-                {
-                    var obj = {duracion: ListaParadas[i].duration}
-                    ListaViajeTiempo.push(obj)
-                }
-            }
-        }
-        return ListaViajeTiempo
-    }catch (e){
-        return null
-    }
-}
-
-
-
-module.exports = {rutasIdUnicas,paradasInicioDestino,tiempoViajeParada}
+module.exports = {rutasIdUnicas,paradasInicioDestino}
