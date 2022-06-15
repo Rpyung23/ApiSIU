@@ -37,26 +37,28 @@ class ModelParada_ruta
 
     async readModelAllParadasJoinRutaByCiudad(ciudad)
     {
+        console.log("ptm")
         await dbConnection()
-        var datos = await SchemaParadaRuta.aggregate([{
-            $lookup: {
-                from: "parada",
-                localField: "idParada",
-                foreignField: "_id",
-                as: "parada"
-            }
-        },{
-            $lookup: {
-                from: "ruta",
-                localField: "idRuta",
-                foreignField: "_id",
-                as: "ruta"
-            }
-        }
-        ])
-        console.log(datos)
+        var datos = await SchemaParadaRuta.aggregate([
+            {
+                $lookup: {
+                    from: "parada",
+                    localField: "idParada",
+                    foreignField: "_id",
+                    as: "parada"
+                }
+            },
+            {
+                $lookup: {
+                    from: "ruta",
+                    localField: "idRuta",
+                    foreignField: "_id",
+                    as: "ruta"
+                }
+        }])
         return datos
     }
+
 }
 
 
