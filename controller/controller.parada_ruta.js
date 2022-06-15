@@ -20,14 +20,8 @@ class ControllerParada_ruta
 
     async readControllerAllParadasJoinRutaByCiudad(ciudad)
     {
-
         var datos = await oModelParada_ruta.readModelAllParadasJoinRutaByCiudad(ciudad)
         var paradas = await oModelParada.readModelAllParadaByCiudad(ciudad)
-        console.log("datos length")
-        console.log(datos)
-        console.log("paradas length")
-        console.log(paradas.datos.length)
-
         var datosPro = []
         var datosParada = []
         var datosPro2 = []

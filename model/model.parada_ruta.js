@@ -37,7 +37,6 @@ class ModelParada_ruta
 
     async readModelAllParadasJoinRutaByCiudad(ciudad)
     {
-        console.log("ptm")
         await dbConnection()
         var datos = await SchemaParadaRuta.aggregate([
             {
