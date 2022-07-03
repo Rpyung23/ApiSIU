@@ -7,7 +7,7 @@ const dbConnection = async ()=>{
             useNewUrlParser:true,
             useUnifiedTopology:true,
         });*/
-        var conn = await mongoose.connect('mongodb+srv://root:fZc2frXKzV7RhZdr@cluster0.aihfo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',{
+        var conn = await mongoose.connect('mongodb://165.227.81.218:27017/siu',{
             useNewUrlParser:true,
             useUnifiedTopology:true,
         });

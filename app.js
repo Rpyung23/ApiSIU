@@ -1,4 +1,6 @@
+let compression = require('compression')
 require('./config/port')
+
 const bodyparser = require('body-parser')
 const express = require('express')
 const cors = require('cors')
@@ -14,6 +16,7 @@ const distancias = require('./view/distancia')
 const sugerencia = require('./view/sugerencia')
 const monitoreo = require('./view/monitoreo')
 
+app.use(compression())
 app.use(bodyparser.urlencoded({urlencoded:false,limit:'80mb'}))
 app.use(bodyparser.json({limit:'80mb'}))
 
