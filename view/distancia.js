@@ -13,36 +13,40 @@ app.get('/readDistance/:ciudad/:latitudI/:longitudI/:latitudF/:longitudF',
         var origins = [req.params.latitudI.toString()+','+req.params.longitudI.toString()];
         var destinations = [req.params.latitudF.toString()+','+req.params.longitudF.toString()]// ['-1.657198, -78.654732']
 
-        var idRutasUnicas = []
+        var idRutasUnicas;
         var resultadoFinal = []
 
         var datosOrigins = []
         var datosDestinations = []
 
-        datosOrigins = await oControllerDistancia.readControllerDistancias(req.params.ciudad,origins);
-        datosDestinations = await oControllerDistancia.readControllerDistancias(req.params.ciudad,destinations);
+        var origenes;
+        var destinos;
 
+        datosOrigins = await oControllerDistancia.readControllerDistancias(ciudad,origins);
+        datosDestinations = await oControllerDistancia.readControllerDistancias(ciudad,destinations);
 
-        idRutasUnicas = rutasIdUnicas(datosOrigins,datosDestinations)
+        origenes = datosOrigins
+        destinos = datosDestinations
 
-        for (var i = 0;i<idRutasUnicas.length;i++)
-        {
+        idRutasUnicas = rutasIdUnicas(origenes,destinos)
 
-            try{
-               datosOrigins = await paradasInicioDestino(idRutasUnicas[i],datosOrigins)
-               datosDestinations = await paradasInicioDestino(idRutasUnicas[i],datosDestinations)
-            }catch (e) {
+        for (var i = 0; i < idRutasUnicas.length; i++) {
+            try {
+                datosOrigins = paradasInicioDestino(idRutasUnicas[i], origenes);
+                datosDestinations = paradasInicioDestino(idRutasUnicas[i], destinos);
+            } catch (e) {
                 console.log(e)
             }
-            var obj = {
-                idRuta: idRutasUnicas,
-                origins:datosOrigins,
-                destinations:datosDestinations,
-                datosRuta : (await oControllerRuta.readControllerAllRutaById(idRutasUnicas[i])).datos
+            if (datosOrigins != null && datosDestinations != null) {
+                var obj = {
+                    idRuta: idRutasUnicas[i],
+                    origins: datosOrigins,
+                    destinations: datosDestinations,
+                    datosRuta: (await oControllerRuta.readControllerAllRutaById(idRutasUnicas[i])).datos
+                }
+                resultadoFinal.push(obj)
             }
-            resultadoFinal.push(obj)
         }
-
         res.status(200)
             .json({
                 statusCode: resultadoFinal.length > 0 ? 200 : 300,
