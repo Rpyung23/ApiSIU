@@ -19,34 +19,28 @@ app.get('/readDistance/:ciudad/:latitudI/:longitudI/:latitudF/:longitudF',
         var datosOrigins = []
         var datosDestinations = []
 
-        var datosOriginsAux = []
-
         datosOrigins = await oControllerDistancia.readControllerDistancias(req.params.ciudad,origins);
         datosDestinations = await oControllerDistancia.readControllerDistancias(req.params.ciudad,destinations);
-
-        datosOriginsAux = datosOrigins
 
 
         idRutasUnicas = rutasIdUnicas(datosOrigins,datosDestinations)
 
         for (var i = 0;i<idRutasUnicas.length;i++)
         {
+
             try{
-                datosOrigins = paradasInicioDestino(idRutasUnicas[i],datosOrigins)
-                datosDestinations = paradasInicioDestino(idRutasUnicas[i],datosDestinations)
+               datosOrigins = await paradasInicioDestino(idRutasUnicas[i],datosOrigins)
+               datosDestinations = await paradasInicioDestino(idRutasUnicas[i],datosDestinations)
             }catch (e) {
                 console.log(e)
             }
-
-            if (datosOrigins!=null && datosDestinations != null){
-                var obj = {
-                    idRuta: idRutasUnicas[i],
-                    origins:datosOrigins,
-                    destinations:datosDestinations,
-                    datosRuta : (await oControllerRuta.readControllerAllRutaById(idRutasUnicas[i])).datos
-                }
-                resultadoFinal.push(obj)
+            var obj = {
+                idRuta: idRutasUnicas,
+                origins:datosOrigins,
+                destinations:datosDestinations,
+                datosRuta : (await oControllerRuta.readControllerAllRutaById(idRutasUnicas[i])).datos
             }
+            resultadoFinal.push(obj)
         }
 
         res.status(200)
