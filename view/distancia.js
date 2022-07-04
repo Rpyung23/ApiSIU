@@ -52,7 +52,7 @@ app.get('/readDistance/:ciudad/:latitudI/:longitudI/:latitudF/:longitudF',
         res.status(200)
             .json({
                 statusCode: resultadoFinal.length > 0 ? 200 : 300,
-                result:datosOriginsAux
+                result:resultadoFinal
             })
     });
 
