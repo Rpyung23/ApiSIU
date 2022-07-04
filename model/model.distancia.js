@@ -34,6 +34,7 @@ class ModelDistancia
                     datos.push(obj)
                 }
             }
+
             return datos;
         }catch (e) {
             console.log("ERROR MODEL DISTANCIA")

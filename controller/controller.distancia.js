@@ -17,7 +17,7 @@ class ControllerDistancia
             /*let paradas = await oControllerParada.readControllerAllParadasByCiudad(ciudad);*/
             var LONGITUD_PEDAZOS = Math.trunc(paradas.length / 25);
             var mListaParadasDivider = []
-            console.log("LONGITUD PEDAZOS : "+LONGITUD_PEDAZOS)
+
             /**DIVIDE LAS PARADAS EN ARRAYS DE TAMAÑO 25**/
             var start = 0;
             var end = 25;

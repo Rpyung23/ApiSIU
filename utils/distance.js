@@ -31,7 +31,9 @@ let rutasIdUnicas = (datosOrigins,datosDestinations)=>
         }
         return acc;
     },[])
-
+    console.log("RUTAS UNICAS....")
+    console.log(result)
+    console.log("------------------------")
     return result
 }
 
@@ -39,11 +41,13 @@ let paradasInicioDestino = (Idruta,ListaParadas)=>
 {
     var ListaParadaPorRuta = []
 
+
     try{
         for (var i = 0;i<ListaParadas.length;i++)
         {
             for (var j =0 ;j<ListaParadas[i].paradaMongoDB.ruta.length;j++)
             {
+
                 if (Idruta == ListaParadas[i].paradaMongoDB.ruta[j]._id.toString())
                 {
                     ListaParadaPorRuta.push(ListaParadas[i].paradaMongoDB.parada)

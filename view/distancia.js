@@ -19,8 +19,13 @@ app.get('/readDistance/:ciudad/:latitudI/:longitudI/:latitudF/:longitudF',
         var datosOrigins = []
         var datosDestinations = []
 
+        var datosOriginsAux = []
+
         datosOrigins = await oControllerDistancia.readControllerDistancias(req.params.ciudad,origins);
         datosDestinations = await oControllerDistancia.readControllerDistancias(req.params.ciudad,destinations);
+
+        datosOriginsAux = datosOrigins
+
 
         idRutasUnicas = rutasIdUnicas(datosOrigins,datosDestinations)
 
@@ -43,6 +48,7 @@ app.get('/readDistance/:ciudad/:latitudI/:longitudI/:latitudF/:longitudF',
                 resultadoFinal.push(obj)
             }
         }
+
         res.status(200)
             .json({
                 statusCode: resultadoFinal.length > 0 ? 200 : 300,
