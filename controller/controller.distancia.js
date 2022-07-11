@@ -3,23 +3,23 @@ const ControllerParada = require("../controller/controller.parada");
 const ControllerParada_ruta = require("../controller/controller.parada_ruta");
 const oControllerParada = new ControllerParada()
 const oControllerParadaRuta = new ControllerParada_ruta()
-const e = require("express");
 
 const oModelDistancia = new ModelDistancia()
 
 class ControllerDistancia
 {
-    async readControllerDistancias(ciudad,origins)
+    async readControllerDistancias(ciudad,origins,paradas)
     {
         try{
             var datos = []
-            var paradas = await oControllerParadaRuta.readControllerAllParadasJoinRutaByCiudad(ciudad)
+
+            datos = await  oModelDistancia.readModelDistancia(ciudad,paradas,origins)
             /*let paradas = await oControllerParada.readControllerAllParadasByCiudad(ciudad);*/
-            var LONGITUD_PEDAZOS = Math.trunc(paradas.length / 25);
+            /*var LONGITUD_PEDAZOS = Math.trunc(paradas.length / 25);
             var mListaParadasDivider = []
 
             /**DIVIDE LAS PARADAS EN ARRAYS DE TAMAÑO 25**/
-            var start = 0;
+            /*var start = 0;
             var end = 25;
 
             for(var i = 0;i<LONGITUD_PEDAZOS;i++)
@@ -28,7 +28,7 @@ class ControllerDistancia
                 start = start + 25;
                 end = end + 25;
             }
-            /******************************************/
+
             for (var j=0;j<mListaParadasDivider.length;j++)
             {
                 var resultadoModelDistance = await oModelDistancia
@@ -37,7 +37,8 @@ class ControllerDistancia
                 {
                     datos.push(resultadoModelDistance[k])
                 }
-            }
+            }*/
+            //console.log(datos)
             return datos
         }catch (e) {
             console.log("ERROR CONTROLLER DISTANCIAS")
