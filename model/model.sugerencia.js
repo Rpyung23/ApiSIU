@@ -13,11 +13,12 @@ class ModelSugerencia
         try{
             await dbConnection()
             let oS = new SchemaSugerencia()
-            oS.nombres = datos.nombres
             oS.telefono = datos.telefono
+            oS.nombres = datos.nombres
             oS.email = datos.email
-            oS.segurencia = datos.segurencia
+            oS.descripcion = datos.descripcion
             oS.IdCiudad = mongoose.Types.ObjectId(datos.IdCiudad)
+            console.log();
             await oS.save()
             callback(true,'ok')
         }catch (e) {
