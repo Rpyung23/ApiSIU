@@ -18,6 +18,36 @@ class ModelEmpresa{
             return {error:getCodeMongoDBString(e.code),datos:[]}
         }
     }
+
+    async readModelGetConnectionsEmpresaByCiudad(idCiudad)
+    {
+
+        try {
+            var conn = await dbConnection()
+            var datos = await SchemaEmpresa.aggregate([
+                {
+                    $match:
+                        {
+                            idCiudad:mongoose.Types.ObjectId(idCiudad)
+                        }
+                },
+                {
+                    $lookup:{
+                        from:'servidor',
+                        localField:'idServidor',
+                        foreignField:'_id',
+                        as:'servidor'
+                    }
+                }
+            ])
+            var response = {error:null,datos:datos}
+            return response
+        }catch (e) {
+            console.log("ERROR MODEL EMPRESA")
+            console.log(e)
+            return {error:getCodeMongoDBString(e.code),datos:[]}
+        }
+    }
 }
 
 module.exports = ModelEmpresa

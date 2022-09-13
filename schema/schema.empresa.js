@@ -5,7 +5,9 @@ const SchemaEmpresa = Schema({
     dir:{type:String,require:true},
     detalle:{type:String,require:true},
     lineas:{type:String,require:true},
-    idCiudad:{type:ObjectId,require:true}
+    idCiudad:{type:ObjectId,require:true},
+    codigoEmpresa:{type:String,require: true},
+    idServidor:{type:ObjectId,require:true}
 },{collection:'empresa'});
 
 module.exports = model('empresa',SchemaEmpresa)

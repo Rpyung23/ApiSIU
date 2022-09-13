@@ -3,8 +3,8 @@ const oModelMonitoreo = new ModelMonitoreo()
 
 class ControllerMonitoreo
 {
-    async readControllerMonitoreoLinea(linea) {
-       var datos = await oModelMonitoreo.readModelMonitoreoLinea(linea)
+    async readControllerMonitoreoLinea(ciudad,linea) {
+       var datos = await oModelMonitoreo.readModelMonitoreoLinea(ciudad,linea)
        return datos
     }
 }
