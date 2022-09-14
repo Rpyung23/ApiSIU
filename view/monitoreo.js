@@ -15,6 +15,7 @@ app.get('/readMonitoreoLinea/:ciudad/:linea', async function (req, res) {
             datos : datos
         })
 
+
     }catch (e) {
         res.status(200).json({
             status_code : 400,
