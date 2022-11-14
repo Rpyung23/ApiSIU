@@ -11,10 +11,16 @@ let rutasIdUnicas = (datosOrigins,datosDestinations)=>
             {
                 for (var l = 0; l<datosDestinations[k].ruta.length;l++)
                 {
-                    if (datosOrigins[i].ruta[j]._id.toString() ==
-                        datosDestinations[k].ruta[l]._id.toString())
+                    if(datosOrigins[i].ruta[j] != null && datosOrigins[i].ruta[j] != undefined)
                     {
-                        bandera++;
+                        if(datosDestinations[k].ruta[l] != null && datosDestinations[k].ruta[l] != undefined)
+                        {
+                            if (datosOrigins[i].ruta[j]._id.toString() ==
+                                datosDestinations[k].ruta[l]._id.toString())
+                            {
+                                bandera++;
+                            }
+                        }
                     }
                 }
             }
