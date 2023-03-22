@@ -3,12 +3,12 @@ const app = express()
 let ControllerMonitoreo = require('../controller/controller.monitoreo')
 let oControllerMonitoreo = new ControllerMonitoreo()
 
-app.get('/readMonitoreoLinea/:ciudad/:linea:/viaje_or_ruta', async function (req, res) {
+app.get('/readMonitoreoLinea/:ciudad/:linea/:viaje_or_ruta', async function (req, res) {
     var linea = req.params.linea
     var ciudad = req.params.ciudad
     var viaje_or_ruta = req.params.viaje_or_ruta
 
-    //console.log(ciudad)
+    console.log(ciudad)
     if(viaje_or_ruta == 'r' && ciudad == '62e2b34a4212142c0ff78ff8'){
         res.status(200).json({
             status_code : 300,
