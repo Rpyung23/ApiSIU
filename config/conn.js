@@ -16,6 +16,7 @@ const dbConnection = async ()=>{
             useNewUrlParser:true,
             useUnifiedTopology:true,
             user: 'admin',
+            dbName:'siu',
             pass: 'Vigitr@ckL@tam2022_'
         });
 
