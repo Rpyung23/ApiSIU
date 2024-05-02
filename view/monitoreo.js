@@ -9,7 +9,8 @@ app.get('/readMonitoreoLinea/:ciudad/:linea/:viaje_or_ruta', async function (req
     var viaje_or_ruta = req.params.viaje_or_ruta
 
     console.log(ciudad)
-    if(viaje_or_ruta == 'r' && ciudad == '62e2b34a4212142c0ff78ff8'){
+    if(viaje_or_ruta == 'r' && (ciudad == '62e2b34a4212142c0ff78ff8' || ciudad == '625f103ab2e13857f3396975'))
+    {
         res.status(200).json({
             status_code : 300,
             msm : 'SIN MONITOREO POR RUTA',
