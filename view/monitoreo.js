@@ -18,7 +18,8 @@ app.get('/readMonitoreoLinea/:ciudad/:linea/:viaje_or_ruta', async function (req
             datos : [],
         })
     }else {
-        if(viaje_or_ruta == 'r' && (ciudad == '62e2b34a4212142c0ff78ff8' || ciudad == '625f103ab2e13857f3396975'))
+        // ciudad == '62e2b34a4212142c0ff78ff8' ||
+        if(viaje_or_ruta == 'r' && (ciudad == '625f103ab2e13857f3396975'))
         {
             res.status(200).json({
                 status_code : 300,
